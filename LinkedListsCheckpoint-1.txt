@@ -1,0 +1,89 @@
+Exercises
+For exercises requiring code, you are free to use the language of your choice.
+
+Give written answers for each question and put them in linked-lists-answers.txt:
+
+1. What are some pros and cons of using linked lists instead of arrays?
+
+A:
+
+Size - Linked lists have a dynamic size versus arrays where it has only a fixed size.
+
+Access - Arrays can be accessed randomly and have efficient indexing. With Linked lists,
+there is no random access, you need to start at the head and go through each node one 
+by one to get to the desired element.
+
+Memory - since arrays can only be created with a fixed size, we might tend to overestimate 
+the amount of memory locations that are needed. The dynamic sizing of linked lists eliminate 
+this issue and no memory is wasted, we only use what we need. 
+
+2. Come up with a real world example of a linked list.
+
+A:
+
+A linked list application could be for implementing the behavior of a music playlist.
+For a music playlist we can implement a double linked list structure to control the 
+skip back and forward functions. When playing the next song, a pointer to the next 
+node makes it efficient to start the next track. When you add a new track to a playlist, 
+you tack it on to the end. In a linked list, adding a new element is constant 
+time — O(1) operation. Finally, because a linked list has head and tail properties, this 
+provides for an easy way to delineate the beginning and end of a playlist.
+
+
+Programming Questions:
+
+1. The Linked List push function should take a value, create a node, and add it to the end of a list. 
+Below is a push function for a singly linked list. However, there is something wrong with it. Find the
+bug and fix the code.
+
+A:
+
+LinkedList.prototype.push = function(element) {
+ SET node = {
+   value: element,
+   next: null
+ }
+
+ IF the head node does not exist
+   THEN SET head to node
+ ELSE
+   SET current node to head
+ WHILE current.next  
+   SET current node to current.next
+ }
+current.next = current node
+
+2. Given an unsorted singly linked list, remove all duplicates from the linked list.
+
+A:
+```JS
+function Node(data) {
+  this.data = data
+  this.next = null
+}
+
+function removeDuplicates(head) {
+  for (var node = head; node != null; node = node.next) {
+    while (node.next && node.data == node.next.data) {
+      node.next = node.next.next
+    }
+  }
+  return head
+}
+```
+
+3. Given an unsorted singly linked list, reverse it.
+
+```JS
+function reverseList(list) {
+  node = null;
+  while (list)
+  {
+    node = [list[0], node];
+    list = list[1];
+  }
+  return node;
+}
+
+
+```
